@@ -1,4 +1,6 @@
 mod positive;
+#[allow(unused_imports)]
+pub use positive::*;
 
 #[cfg(test)]
 mod tests {
@@ -83,5 +85,12 @@ mod tests {
 
         let s = r / 3.0;
         assert!(s == 2.0 / 3.0);
+    }
+
+    #[test]
+    fn test_square() {
+        let r = -2.;
+        let n = positive::PositiveF64::square(r);
+        assert!(f64::from(n) == 4.0);
     }
 }

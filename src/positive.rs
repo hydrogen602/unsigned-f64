@@ -13,6 +13,54 @@ impl PositiveF64 {
             None
         }
     }
+
+    pub fn abs(f: f64) -> PositiveF64 {
+        PositiveF64(f.abs())
+    }
+
+    pub fn square(f: f64) -> PositiveF64 {
+        PositiveF64(f * f)
+    }
+
+    /// Performs no checking. Useful in scenarios where you know the value is positive and you want to avoid the overhead of checking.
+    pub unsafe fn from_f64_unchecked(value: f64) -> PositiveF64 {
+        PositiveF64(value)
+    }
+
+    pub const PI: PositiveF64 = PositiveF64(std::f64::consts::PI);
+    pub const E: PositiveF64 = PositiveF64(std::f64::consts::E);
+    pub const FRAC_1_PI: PositiveF64 = PositiveF64(std::f64::consts::FRAC_1_PI);
+    pub const FRAC_1_SQRT_2: PositiveF64 = PositiveF64(std::f64::consts::FRAC_1_SQRT_2);
+    pub const FRAC_2_PI: PositiveF64 = PositiveF64(std::f64::consts::FRAC_2_PI);
+    pub const FRAC_2_SQRT_PI: PositiveF64 = PositiveF64(std::f64::consts::FRAC_2_SQRT_PI);
+    pub const FRAC_PI_2: PositiveF64 = PositiveF64(std::f64::consts::FRAC_PI_2);
+    pub const FRAC_PI_3: PositiveF64 = PositiveF64(std::f64::consts::FRAC_PI_3);
+    pub const FRAC_PI_4: PositiveF64 = PositiveF64(std::f64::consts::FRAC_PI_4);
+    pub const FRAC_PI_6: PositiveF64 = PositiveF64(std::f64::consts::FRAC_PI_6);
+    pub const FRAC_PI_8: PositiveF64 = PositiveF64(std::f64::consts::FRAC_PI_8);
+    pub const LN_10: PositiveF64 = PositiveF64(std::f64::consts::LN_10);
+    pub const LN_2: PositiveF64 = PositiveF64(std::f64::consts::LN_2);
+    pub const LOG10_E: PositiveF64 = PositiveF64(std::f64::consts::LOG10_E);
+    pub const LOG2_E: PositiveF64 = PositiveF64(std::f64::consts::LOG2_E);
+    pub const SQRT_2: PositiveF64 = PositiveF64(std::f64::consts::SQRT_2);
+    pub const TAU: PositiveF64 = PositiveF64(std::f64::consts::TAU);
+    pub const EPSILON: PositiveF64 = PositiveF64(f64::EPSILON);
+    pub const INFINITY: PositiveF64 = PositiveF64(f64::INFINITY);
+
+    pub const ZERO: PositiveF64 = PositiveF64(0.0);
+    pub const ONE: PositiveF64 = PositiveF64(1.0);
+}
+
+impl PartialEq<f64> for PositiveF64 {
+    fn eq(&self, other: &f64) -> bool {
+        self.0 == *other
+    }
+}
+
+impl PartialOrd<f64> for PositiveF64 {
+    fn partial_cmp(&self, other: &f64) -> Option<std::cmp::Ordering> {
+        self.0.partial_cmp(other)
+    }
 }
 
 impl From<PositiveF64> for f64 {
@@ -22,7 +70,7 @@ impl From<PositiveF64> for f64 {
 }
 
 impl TryFrom<f64> for PositiveF64 {
-    type Error = (); // there's nothing to report
+    type Error = (); // there's nothing to report, its just negative
 
     fn try_from(value: f64) -> Result<Self, Self::Error> {
         if value >= 0.0 {
