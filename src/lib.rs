@@ -1,6 +1,6 @@
-mod positive;
+mod unsigned;
 #[allow(unused_imports)]
-pub use positive::*;
+pub use unsigned::*;
 
 #[cfg(test)]
 mod tests {
@@ -8,31 +8,31 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let r = positive::PositiveF64::new(2.0);
+        let r = unsigned::UnsignedF64::new(2.0);
         assert!(r.is_some());
         assert!(f64::from(r.unwrap()) == 2.0);
 
-        let n = positive::PositiveF64::new(-2.0);
+        let n = unsigned::UnsignedF64::new(-2.0);
         assert_eq!(n, None);
     }
 
     #[test]
     fn try_from() {
-        let r = positive::PositiveF64::try_from(2.0);
+        let r = unsigned::UnsignedF64::try_from(2.0);
         assert!(r.is_ok());
         assert!(f64::from(r.unwrap()) == 2.0);
 
-        let n = positive::PositiveF64::try_from(-2.0);
+        let n = unsigned::UnsignedF64::try_from(-2.0);
         assert!(n.is_err());
     }
 
     #[test]
     fn add() {
-        let r = positive::PositiveF64::new(2.0);
+        let r = unsigned::UnsignedF64::new(2.0);
         assert!(r.is_some());
         let r = r.unwrap();
 
-        let n = positive::PositiveF64::new(3.0);
+        let n = unsigned::UnsignedF64::new(3.0);
         assert!(n.is_some());
         let n = n.unwrap();
 
@@ -45,11 +45,11 @@ mod tests {
 
     #[test]
     fn sub() {
-        let r = positive::PositiveF64::new(2.0);
+        let r = unsigned::UnsignedF64::new(2.0);
         assert!(r.is_some());
         let r = r.unwrap();
 
-        let n = positive::PositiveF64::new(3.0);
+        let n = unsigned::UnsignedF64::new(3.0);
         assert!(n.is_some());
         let n = n.unwrap();
 
@@ -62,7 +62,7 @@ mod tests {
 
     #[test]
     fn negate() {
-        let r = positive::PositiveF64::new(2.0);
+        let r = unsigned::UnsignedF64::new(2.0);
         assert!(r.is_some());
         let r = r.unwrap();
 
@@ -72,11 +72,11 @@ mod tests {
 
     #[test]
     fn divide() {
-        let r = positive::PositiveF64::new(2.0);
+        let r = unsigned::UnsignedF64::new(2.0);
         assert!(r.is_some());
         let r = r.unwrap();
 
-        let n = positive::PositiveF64::new(3.0);
+        let n = unsigned::UnsignedF64::new(3.0);
         assert!(n.is_some());
         let n = n.unwrap();
 
@@ -90,7 +90,7 @@ mod tests {
     #[test]
     fn test_square() {
         let r = -2.;
-        let n = positive::PositiveF64::square(r);
+        let n = unsigned::UnsignedF64::square(r);
         assert!(f64::from(n) == 4.0);
     }
 }
