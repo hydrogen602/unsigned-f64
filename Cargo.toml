@@ -2,6 +2,15 @@
 name = "unsigned-f64"
 version = "0.1.0"
 edition = "2021"
+authors = ["Jonathan Rotter"]
+description = "A wrapper around f64 that guarantees that the value is always non-negative on the type level."
+license = "MIT"
+documentation = "https://github.com/hydrogen602/unsigned-f64#readme"
+readme = "readme.md"
+homepage = "https://github.com/hydrogen602/unsigned-f64"
+repository = "https://github.com/hydrogen602/unsigned-f64"
+keywords = ["f64", "float", "unsigned", "non-negative", "nonnegative"]
+categories = ["data-structures", "mathematics"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

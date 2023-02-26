@@ -1,7 +1,9 @@
-use core::fmt;
-use std::ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub};
+use std::{
+    fmt::Display,
+    ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub},
+};
 
-#[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
+#[derive(Debug, PartialEq, PartialOrd, Clone, Copy, Default)]
 /// a float that is guaranteed to be positive or zero
 pub struct UnsignedF64(f64);
 
@@ -275,6 +277,12 @@ impl UnsignedF64 {
     pub const ONE: UnsignedF64 = UnsignedF64(1.0);
 }
 
+impl Display for UnsignedF64 {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        self.0.fmt(f)
+    }
+}
+
 impl PartialEq<f64> for UnsignedF64 {
     fn eq(&self, other: &f64) -> bool {
         self.0 == *other
@@ -314,12 +322,6 @@ impl AsRef<f64> for UnsignedF64 {
 impl AsMut<f64> for UnsignedF64 {
     fn as_mut(&mut self) -> &mut f64 {
         &mut self.0
-    }
-}
-
-impl fmt::Display for UnsignedF64 {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}", self.0)
     }
 }
 

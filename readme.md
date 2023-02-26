@@ -31,3 +31,4 @@ println!(
 - Implement the methods where I'm not sure if they can return negative numbers or not
 - Implement `std::ops::Rem` for `UnsignedF64`
 - Implement traits for `&UnsignedF64`
+- Implement serde's Serialize & Deserialize (using features?)
