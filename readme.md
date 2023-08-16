@@ -4,7 +4,7 @@ A library to add the equivalent of unsigned ints to floats by making a `Unsigned
 
 Note:
 
-Given that this problem is way more complicated than I thought (e.g. `-0.0` isn't negative but creates a path to negative numbers via `-Inf`, see https://github.com/hydrogen602/unsigned-f64/issues/1), I would thus recommend the [typed_floats](https://crates.io/crates/typed_floats) library which addresses this problem much more throughly. 
+Given that this problem is way more complicated than I thought (e.g. `-0.0` isn't negative but creates a path to negative numbers via `-Inf`, see https://github.com/hydrogen602/unsigned-f64/issues/1), **I would thus recommend the [typed_floats](https://crates.io/crates/typed_floats) library which addresses this problem much more throughly.**
 
 ## How To
 
