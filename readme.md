@@ -6,6 +6,8 @@ Note:
 
 Given that this problem is way more complicated than I thought (e.g. `-0.0` isn't negative but creates a path to negative numbers via `-Inf`, see https://github.com/hydrogen602/unsigned-f64/issues/1), **I would thus recommend the [typed_floats](https://crates.io/crates/typed_floats) library which addresses this problem much more throughly.**
 
+In order to address the above issue, `-0.0` will be converted to `0.0` when calling `UnsignedF64::new`.
+
 ## How To
 
 Create new unsigned floats using `UnsignedF64::new`. This will check if the `f64` is negative or not and return an `Option`. Many `f64` methods are implemented on `UnsignedF64` so that numbers don't have to be rechecked when non-negativeness is guaranteed, e.g. the square root of an `UnsignedF64` is guaranteed to be non-negative, so `sqrt` returns `UnsignedF64`.
