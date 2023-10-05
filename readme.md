@@ -1,6 +1,6 @@
 # UnsignedF64
 
-A library to add the equivalent of unsigned ints to floats by making a `UnsignedF64` that can't be negative.
+A library to add the equivalent of unsigned ints to floats by making a `UnsignedF64` that can't be negative. This idea is for cases like simulation code, where bugs are hard to debug and types don't add much safety (Since everyting is a f64).
 
 Note:
 
