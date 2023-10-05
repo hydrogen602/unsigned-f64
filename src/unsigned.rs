@@ -8,8 +8,14 @@ use std::{
 pub struct UnsignedF64(f64);
 
 impl UnsignedF64 {
+    /// Creates a new UnsignedF64 if the value is positive or zero.
+    /// Returns None if the value is negative.
+    /// Note: This converts -0.0 to 0.0 as -0.0 can introduce
+    ///     negative values in some operations that are otherwise safe.
     pub fn new(value: f64) -> Option<UnsignedF64> {
-        if value >= 0.0_f64 {
+        if value == 0.0_f64 {
+            Some(UnsignedF64(0.0))
+        } else if value >= 0.0_f64 {
             Some(UnsignedF64(value))
         } else {
             None

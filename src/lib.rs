@@ -93,4 +93,18 @@ mod tests {
         let n = unsigned::UnsignedF64::square(r);
         assert!(f64::from(n) == 4.0);
     }
+
+    #[test]
+    fn test_neg_zero_issue() {
+        let one: crate::UnsignedF64 = crate::UnsignedF64::new(1.0).unwrap();
+        let neg_zero = crate::UnsignedF64::new(-0.0).unwrap();
+
+        let neg_inf: crate::UnsignedF64 = one / neg_zero;
+        let neg_pi_by_two = neg_inf.atan(); // Return PI/2 for -Inf
+        let neg_one = neg_pi_by_two.abs() / neg_pi_by_two;
+
+        println!("neg_one={neg_one}");
+
+        assert!(neg_one >= 0.0);
+    }
 }
