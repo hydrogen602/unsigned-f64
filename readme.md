@@ -2,11 +2,9 @@
 
 A library to add the equivalent of unsigned ints to floats by making a `UnsignedF64` that can't be negative. This idea is for cases like simulation code, where bugs are hard to debug and types don't add much safety (Since everyting is a f64).
 
-Note:
+**For a more complete feature set, see [typed_floats](https://crates.io/crates/typed_floats).**
 
-Given that this problem is way more complicated than I thought (e.g. `-0.0` isn't negative but creates a path to negative numbers via `-Inf`, see https://github.com/hydrogen602/unsigned-f64/issues/1), **I would thus recommend the [typed_floats](https://crates.io/crates/typed_floats) library which addresses this problem much more throughly.**
-
-In order to address the above issue, `-0.0` will be converted to `0.0` when calling `UnsignedF64::new`.
+In order to address issues with `-0.0` being able to turn into negative numbers, `-0.0` will be converted to `0.0` when calling `UnsignedF64::new`.
 
 ## How To
 
